@@ -1,4 +1,17 @@
+import { useState } from "react";
+
 const Register = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [secret, setSecret] = useState("");
+  /*React State => useState
+    onchange event => onChange.....etc */
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(name, email, password, secret);
+  };
+
   return (
     <div className="container-fluid">
       <div className="row py-5 bg-warning text-center">
@@ -8,12 +21,14 @@ const Register = () => {
       </div>
       <div className="row py-5">
         <div className="col-md-6 offset-md-3">
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="form-group p-2">
               <small>
                 <label className="text-muted">Your name</label>
               </small>
               <input
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 type="text"
                 className="form-control"
                 placeholder="Enter Name"
@@ -24,6 +39,8 @@ const Register = () => {
                 <label className="text-muted">Email</label>
               </small>
               <input
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 type="email"
                 className="form-control"
                 placeholder="Enter Email"
@@ -34,6 +51,8 @@ const Register = () => {
                 <label className="text-muted">Password</label>
               </small>
               <input
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 type="password"
                 className="form-control"
                 placeholder="Enter Password"
@@ -54,6 +73,8 @@ const Register = () => {
             </div>
             <div className="from-group p-2">
               <input
+                value={secret}
+                onChange={(e) => setSecret(e.target.value)}
                 type="text"
                 className="form-control"
                 placeholder="write your text here"
