@@ -3,6 +3,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { Modal } from "antd";
 import Link from "next/link";
+import { SyncOutlined } from "@ant-design/icons";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -10,12 +11,14 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [secret, setSecret] = useState("");
   const [ok, setOk] = useState(false);
+  const [loading, setLoading] = useState(false);
   /*React State => useState
     onchange event => onChange.....etc */
   const handleSubmit = async (e) => {
     e.preventDefault();
     //console.log(name, email, password, secret);
     try {
+      setLoading(true); //when user submit form then we will show loading and when we get response so we stop loading
       const { data } = await axios.post(
         `${process.env.NEXT_PUBLIC_API}/register`,
         {
@@ -30,8 +33,10 @@ const Register = () => {
       setPassword("");
       setSecret("");
       setOk(data.ok);
+      setLoading(false);
     } catch (err) {
       toast.error(err.response.data);
+      setLoading(false);
     }
   };
 
@@ -108,7 +113,7 @@ const Register = () => {
                 disabled={!name || !password || !secret || !email}
                 className="btn btn-primary col-12 mt-2"
               >
-                submit
+                {loading ? <SyncOutlined spin className="py-1" /> : "submit"}
               </button>
             </div>
           </form>
