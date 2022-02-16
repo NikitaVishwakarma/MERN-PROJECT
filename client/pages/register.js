@@ -16,12 +16,19 @@ const Register = () => {
     e.preventDefault();
     //console.log(name, email, password, secret);
     try {
-      const { data } = await axios.post("http://localhost:8000/api/register", {
-        name,
-        email,
-        password,
-        secret,
-      });
+      const { data } = await axios.post(
+        `${process.env.NEXT_PUBLIC_API}/register`,
+        {
+          name,
+          email,
+          password,
+          secret,
+        }
+      );
+      setName("");
+      setEmail("");
+      setPassword("");
+      setSecret("");
       setOk(data.ok);
     } catch (err) {
       toast.error(err.response.data);
@@ -97,7 +104,12 @@ const Register = () => {
               />
             </div>
             <div className="form-group p-2">
-              <button className="btn btn-primary col-12 mt-2">submit</button>
+              <button
+                disabled={!name || !password || !secret || !email}
+                className="btn btn-primary col-12 mt-2"
+              >
+                submit
+              </button>
             </div>
           </form>
         </div>
