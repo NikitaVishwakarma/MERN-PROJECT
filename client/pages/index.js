@@ -4,7 +4,7 @@ const Home = () => {
       <div className="row">
         <div className="col">
           <h1 className="display-1 text-center">Home page</h1>
-          <img src="/images/a.jpg" alt="image" />
+          <img src="/images/b.jpg" alt="image" />
         </div>
       </div>
     </div>
