@@ -3,7 +3,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { Modal } from "antd";
 import Link from "next/link";
-import { SyncOutlined } from "@ant-design/icons";
+import AuthForm from "../components/forms/AuthForm";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -49,74 +49,18 @@ const Register = () => {
       </div>
       <div className="row py-5">
         <div className="col-md-6 offset-md-3">
-          <form onSubmit={handleSubmit}>
-            <div className="form-group p-2">
-              <small>
-                <label className="text-muted">Your name</label>
-              </small>
-              <input
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                type="text"
-                className="form-control"
-                placeholder="Enter Name"
-              />
-            </div>
-            <div className="form-group p-2">
-              <small>
-                <label className="text-muted">Email</label>
-              </small>
-              <input
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                type="email"
-                className="form-control"
-                placeholder="Enter Email"
-              />
-            </div>
-            <div className="form-group p-2">
-              <small>
-                <label className="text-muted">Password</label>
-              </small>
-              <input
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                type="password"
-                className="form-control"
-                placeholder="Enter Password"
-              />
-            </div>
-            <div className="form-group p-2">
-              <small>
-                <label className="text-muted">Pick a question</label>
-              </small>
-              <select className="form-control">
-                <option>what is your pet name?</option>
-                <option>what is your favourite food?</option>
-                <option>what is your nick name?</option>
-              </select>
-              <small className="form-text text-muted">
-                You can use this when you forget your password
-              </small>
-            </div>
-            <div className="from-group p-2">
-              <input
-                value={secret}
-                onChange={(e) => setSecret(e.target.value)}
-                type="text"
-                className="form-control"
-                placeholder="write your text here"
-              />
-            </div>
-            <div className="form-group p-2">
-              <button
-                disabled={!name || !password || !secret || !email}
-                className="btn btn-primary col-12 mt-2"
-              >
-                {loading ? <SyncOutlined spin className="py-1" /> : "submit"}
-              </button>
-            </div>
-          </form>
+          <AuthForm
+            handleSubmit={handleSubmit}
+            name={name}
+            setName={setName}
+            email={email}
+            setEmail={setEmail}
+            password={password}
+            setPassword={setPassword}
+            secret={secret}
+            setSecret={setSecret}
+            loading={loading}
+          />
         </div>
       </div>
       <div className="row">

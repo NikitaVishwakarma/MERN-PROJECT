@@ -3,7 +3,7 @@ const Nav = () => {
   return (
     <nav className="nav bg-dark d-flex justify-content-between">
       <Link href="/">
-        <a className="nav-link text-light">Home</a>
+        <a className="nav-link text-light logo">Mybook</a>
       </Link>
       <Link href="/register">
         <a className="nav-link text-light">Register</a>
