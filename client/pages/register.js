@@ -42,7 +42,7 @@ const Register = () => {
 
   return (
     <div className="container-fluid">
-      <div className="row py-5 bg-warning text-center">
+      <div className="row py-5 bg-default-image text-center">
         <div className="col">
           <h1>Register page</h1>
         </div>
