@@ -24,7 +24,8 @@ const Login = () => {
           password,
         }
       );
-      router.push("/");
+      //router.push("/");
+      console.log(data);
       setEmail("");
       setPassword("");
       setLoading(false);
